@@ -34,6 +34,11 @@ push를 잘못해서 README가 날라가는 바람에 패치노트가 날라갔�
 + index.html 모바일 페이지 추가
 ```
 
+```
+● 개발 예정
+ - 비프백 추가 (메뉴가 많아서 )
+```
+
 Made with. HTML, CSS, Javascript, Bootstrap  
 Made by. Yang Lab (Roblox : flowerhr)
 
