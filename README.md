@@ -33,3 +33,8 @@ push를 잘못해서 README가 날라가는 바람에 패치노트가 날라갔�
 
 + index.html 모바일 페이지 추가
 ```
+
+Made with. HTML, CSS, Javascript, Bootstrap  
+Made by. Yang Lab (Roblox : flowerhr)
+
+※ 본 계산기는 제주 연동에서 공식으로 제작하지 않았습니다 ※
