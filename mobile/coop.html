@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <title>UY 협력사</title>
     <script>
         function isMobile() {
             var UserAgent = navigator.userAgent;
@@ -20,22 +21,23 @@
         }
     
         if (isMobile() == false) {
-            location.href = "../";
+            location.href = "../coop.html";
         }
     </script>
-    <title>제주연동 사업용 계산기</title>
 </head>
 <body>
     <div id="center-box">
-        <div class="alert alert-success" role="alert" id="github-alert-box">
-            문의, 버전, 크레딧 등의 정보는 깃허브 링크 참고바랍니다. <a href="https://github.com/Rhwod/roblox-jeju-calculator" class="alert-link">[깃허브 링크]</a>
-        </div>
-    <div id="top-box"><button type="button" class="btn btn-primary" class="btn btn-default btn-lg" onclick="window.open('../where.html', '_self')" style="font-size:30px;">어디야 커피 계산기</button></div>
+    <button type="button" id="first-button" class="btn btn-primary" class="btn btn-default btn-lg" onclick="window.open('../ice21.html', '_self')" >한가한 아이스 21</button>
     <div id="padding"></div>
-    <div id="middle-box"><button type="button" class="btn btn-primary" class="btn btn-default btn-lg" onclick="window.open('../queen.html', '_self')" style="font-size:30px;">버거퀸 계산기</button></div>
+    <button type="button" id="second-button" class="btn btn-primary" class="btn btn-default btn-lg" onclick="window.open('../shc.html', '_self')" >SHC 치킨</button>
     <div id="padding"></div>
-    <div id="last-box"><button type="button" class="btn btn-info" class="btn btn-default btn-lg" onclick="window.open('./coop.html', '_self')" style="font-size:30px;">UY 협력사</button></div>
+    <button type="button" id="third-button" class="btn btn-primary" class="btn btn-default btn-lg" onclick="window.open('../error', '_self')" >비프백</button>
+    <div id="padding"></div>
+    <button type="button" id="fourth-button" class="btn btn-primary" class="btn btn-default btn-lg" onclick="window.open('../yeondong_bbunsick.html', '_self')">연동분식</button>
     </div>
+    <button type="button" class="btn btn-success" class="btn btn-default btn-lg" onclick="window.open('./index.html', '_self')" id="back-button">돌아가기</button>
+
+
 <style>
     #center-box {
         height: 100vh;
@@ -46,27 +48,47 @@
     #padding {
         margin: 10px;
     }
-    #github-alert-box {
-        
-        position:absolute;
-        justify-content: center;
-        top: 10%;
-        left: 7%;
-        right: 7%;
+    #back-button {
         align-items: center;
         text-align: center;
-    }
-    #top-box {
+        justify-content: center;
+        font-size:26px;
         position: absolute;
-        top: 200px
+        top: 540px;
+        left: 30%;
+        right:30%;
     }
-    #middle-box {
+    #first-button {
+        align-items: center;
+        text-align: center;
+        justify-content: center;
         position: absolute;
-        top: 280px
+        top: 280px;
+        font-size: 25px;
     }
-    #last-box {
+    #second-button {
+        align-items: center;
+        text-align: center;
+        justify-content: center;
         position: absolute;
-        top: 360px
+        top: 335px;
+        font-size: 25px;
+    }
+    #third-button {
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        position: absolute;
+        top: 390px;
+        font-size: 25px;
+    }
+    #fourth-button {
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        position: absolute;
+        top: 445px;
+        font-size: 25px;
     }
 </style>
 </body>
