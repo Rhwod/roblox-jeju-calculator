@@ -6,7 +6,11 @@
 
 push를 잘못해서 README가 날라가는 바람에 패치노트가 날라갔습니다 기억나는대로 써놓은거라서 정확하지 않아요
 
-# Patch Note
+# 📲 접속하기
+
+[사이트 접속](https://rhwod.github.io/roblox-jeju-calculator)
+
+# 📝 Patch Note
 ```
 22/12/11 Patch Note
 
