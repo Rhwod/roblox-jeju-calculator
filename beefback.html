@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <title>비프백 가격 계산</title>
+    <script>
+        let res = 0
+        let count = 0
+        let discountCount = 0
+        function add(int) {
+            if (count == 10) {
+                setAlert('10개까지만 주문이 가능합니다')
+            }
+            else {
+                if (discountCount == 1) {
+                    setAlert('할인이 적용되어서 더 추가할수 없습니다')
+                }
+                else {
+                    res = Number(res) + Number(int)
+                    count = Number(count) + 1
+                    showCount()
+                    show(res)
+                }
+                
+            }
+            
+        }
+
+        function show(message) {
+            document.getElementById('demo').innerHTML = message+"원"
+        }
+
+        function setAlert(message) {
+            document.getElementById('alert').innerHTML = message
+        }
+
+        function showCount() {
+            document.getElementById('counter').innerHTML = count+"개 선택함"
+        }
+
+        function discount() {
+            if (count !== 0) {
+                if (discountCount == 1) {
+                setAlert('이미 할인되었습니다')
+                }
+                else {
+                res = parseInt(res / 2)
+                discountCount = 1
+                show(res)
+                }
+            } 
+        }
+    </script>
+    <style>
+        #center {
+            flex: 3;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;"> 
+    </br>
+    </br>
+    <button type="button" class="btn btn-primary" id="center" onclick="add(20000)"style="font-size:20px;">비프백 토마호크</button>
+    <button type="button" class="btn btn-primary" id="center" onclick="add(19000)"style="font-size:20px;">비프백 티본</button>
+    <button type="button" class="btn btn-primary" id="center" onclick="add(15000)"style="font-size:20px;">제주 파스타</button>
+
+    <button type="button" class="btn btn-info" id="center" onclick="add(8000)"style="font-size:20px; color:white;">오지 치즈 후라이즈</button>
+    <button type="button" class="btn btn-info" id="center" onclick="add(7000)"style="font-size:20px; color:white;">스위트 포테이토</button>
+    <button type="button" class="btn btn-info" id="center" onclick="add(12000)"style="font-size:20px; color:white;">감바스 샐러드</button>
+    <button type="button" class="btn btn-info" id="center" onclick="add(4500)"style="font-size:20px; color:white;">홈메이드 수프</button>
+    
+
+    <button type="button" class="btn btn-secondary" id="center" onclick="add(3000)"style="font-size:20px;">콜라</button>
+    <button type="button" class="btn btn-secondary" id="center" onclick="add(5000)"style="font-size:20px;">비프백 에이드</button>
+    <button type="button" class="btn btn-secondary" id="center" onclick="add(4000)"style="font-size:20px;">과일 에이드</button>
+
+    <button type="button" class="btn btn-dark" id="center" onclick="add(35000)"style="font-size:20px;">블랙라벨 비프 세트</button>
+    <button type="button" class="btn btn-dark" id="center" onclick="add(28000)"style="font-size:20px;">토마호크 세트</button>
+    <button type="button" class="btn btn-dark" id="center" onclick="add(26000)"style="font-size:20px;">티본 세트</button>
+
+    <button type="button" class="btn btn-dark" id="center" onclick="add(20000)"style="font-size:20px;">딜리버리 런치박스</button>
+</br>
+    </br>
+    <p id="demo" style="font-size:30px">0원</p>
+    <p id="counter" style="font-size:20px; text-align: center;">0개 선택함</p>
+    <p id="alert" style="font-size:30px; color: red"></p>
+    </br>
+    <button type="button" style="font-size:20px;" onclick="discount()"class="btn btn-warning">50% 할인</button>
+    <button type="button" class="btn btn-danger" id="center" onclick="window.location.reload(true)"style="font-size:20px;">초기화</button>
+    <br><br><br>
+    <button type="button" class="btn btn-success" id="center" onclick="window.open('./', '_self')"style="font-size:20px;">돌아가기</button>
+    </div>
+</body>
+</html>

@@ -12,8 +12,10 @@ push를 잘못해서 README가 날라가는 바람에 패치노트가 날라갔�
 
 # 📱 스마트폰 앱
 
-앱 개발 완료되었으나
-로고 사용 등에 관한 것으로 인해 공개는 보류
+[앱 다운로드 (Android)](https://github.com/Rhwod/roblox-jeju-calculator/releases/download/MobileApplication/Jeju.Calculator.apk)
+
+앱에 내장되어 있는 로고를 다른 곳에 사용하지 말아주세요.
+자세한 내용은 Release에서 확인하세요.
 
 # 📝 Patch Note
 ```
