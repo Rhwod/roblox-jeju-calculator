@@ -17,6 +17,8 @@
         let discountCount = 0
         let total = 0
 
+        var modalSet = 0
+
         let jsonDB = {}
 
         const now = new Date();
@@ -68,15 +70,28 @@
             document.getElementById('counter').innerHTML = count+"개 선택함"
         }
 
-        function discount() {
+        function discount(type) {
             if (count !== 0) {
                 if (discountCount == 1) {
-                setAlert('이미 할인되었습니다')
+                    setAlert('이미 할인되었습니다')
                 }
                 else {
-                res = parseInt(res / 2)
-                discountCount = 1
-                show(res)
+                    jsonDB['discount'] = type
+                    switch (type) {
+                        case 50:
+                            res = parseInt(res / 2)
+                            discountCount = 1
+                            show(res)
+                            break
+                        case 0:
+                            res = 0
+                            discountCount = 1
+                            show(res)
+                            break
+                    }
+                    let discountModal = document.getElementById('discountModal')
+                    discountModal.style.display = 'none'
+
                 }
             } 
         }
@@ -135,6 +150,7 @@
             discountCount = 0
             showCount()
             show(res)
+            setAlert('')
         }
 
         function returnPage() {
@@ -142,14 +158,25 @@
                 window.open('./', '_self')
             }
         }
-        function modalShow() {
+        function modalShowClose() {
             let discountModal = document.getElementById('discountModal')
-
-            discountModal.style.display = "block"
+            if (modalSet == 0) {
+                discountModal.style.display = "block"
+                modalSet = 1
+            }
+            else if (modalSet == 1) {
+                discountModal.style.display = "none"
+                modalSet = 0
+            }
         }
         function closeModal() {
             let discountModal = document.getElementById('discountModal')
             discountModal.style.display = "none"
+        }
+    </script>
+    <script>
+        window.onbeforeunload = function() {
+            return "페이지를 나가면 판매기록이 손실됩니다. 나가시겠습니까?"
         }
     </script>
     <style>
@@ -224,12 +251,12 @@
     <p id="counter" style="font-size:20px; text-align: center;">0개 선택함</p>
     <p id="alert" style="font-size:30px; color: red"></p>
     </br>
-    <button type="button" id="discountBtn" style="font-size:20px;" onclick="modalShow()"class="btn btn-warning">할인 처리</button>
+    <button type="button" id="discountBtn" style="font-size:20px;" onclick="modalShowClose()"class="btn btn-warning">할인 처리</button>
     <div id="discountModal" style="padding-top: 15px;">
         <span style="position: absolute; top: 10px; right: 10px; font-size: 20px; cursor: pointer;" onclick="closeModal()">&times;</span>
         할인 처리<br>
-        <button type="button" style="margin-top: 12px; font-size: 20px;" class="btn btn-primary" id="center" onclick="discount()">50% 할인</button>
-        <button type="button" style="margin-left: 10px; margin-top: 12px; font-size: 20px;" class="btn btn-primary" id="center" onclick="discount()">0원 처리</button>
+        <button type="button" style="margin-top: 12px; font-size: 20px;" class="btn btn-primary" id="center" onclick="discount(50)">50% 할인</button>
+        <button type="button" style="margin-left: 10px; margin-top: 12px; font-size: 20px;" class="btn btn-primary" id="center" onclick="discount(0)">0원 처리</button>
     </div>
     
     <button type="button" class="btn btn-dark" id="center" onclick="addLog()"style="font-size:20px;">기록 추가</button>
