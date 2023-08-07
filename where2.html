@@ -28,6 +28,7 @@
 
         let saleLog = `[ ${year}/${month}/${day} 어디야 판매기록 ]<br><br>`
         let logCount = 0
+
         function add(int,code) {
             if (count == 10) {
                 setAlert('10개까지만 주문이 가능합니다')
@@ -104,14 +105,30 @@
                 setAlert('상품이 추가되지 않았습니다!')
             }
             else {
+                let discountSet = '';
+
                 logCount += 1
                 let addSaleLogSet = `${logCount}.`
 
                 for (const key in jsonDB) {
                     if (jsonDB.hasOwnProperty(key)) {
                         const value = jsonDB[key];
-                        var productName = list[key]
-                        addSaleLogSet += ` ${productName} ${value}개,`
+                        if (key == 'discount') {
+                            switch (value) {
+                                case 0:
+                                    discountSet = ' (공무원 무료)'
+                                    break;
+                                case 50:
+                                    discountSet = ' (협력사 할인)'
+                                    break;
+                            }
+                            
+                        }
+                        else {
+                            var productName = list[key]
+                            addSaleLogSet += ` ${productName} ${value}개,`
+                        }
+
                     }
                 }
 
@@ -119,7 +136,7 @@
                 var newSaleLogSet = String(addSaleLogSet.slice(0, -1))
                 
 
-                newSaleLogSet += ` - ${res}원<br>`
+                newSaleLogSet += ` - ${res}원${discountSet}<br>`
                 console.log(newSaleLogSet)
 
                 saleLog += newSaleLogSet
@@ -168,10 +185,6 @@
                 discountModal.style.display = "none"
                 modalSet = 0
             }
-        }
-        function closeModal() {
-            let discountModal = document.getElementById('discountModal')
-            discountModal.style.display = "none"
         }
     </script>
     <script>
@@ -253,7 +266,7 @@
     </br>
     <button type="button" id="discountBtn" style="font-size:20px;" onclick="modalShowClose()"class="btn btn-warning">할인 처리</button>
     <div id="discountModal" style="padding-top: 15px;">
-        <span style="position: absolute; top: 10px; right: 10px; font-size: 20px; cursor: pointer;" onclick="closeModal()">&times;</span>
+        <span style="position: absolute; top: 10px; right: 10px; font-size: 20px; cursor: pointer;" onclick="modalShowClose()">&times;</span>
         할인 처리<br>
         <button type="button" style="margin-top: 12px; font-size: 20px;" class="btn btn-primary" id="center" onclick="discount(50)">50% 할인</button>
         <button type="button" style="margin-left: 10px; margin-top: 12px; font-size: 20px;" class="btn btn-primary" id="center" onclick="discount(0)">0원 처리</button>
