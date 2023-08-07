@@ -63,6 +63,14 @@ push를 잘못해서 README가 날라가는 바람에 패치노트가 날라갔�
 ```
 
 ```
+23/08/06 Patch Note
+
++ 판매기록 작성 어디야 임시 추가 (where2.html)
++ (PC) 메인 페이지에서 Enter키 5회 누르면 테스트 메뉴
++ (Mobile) 메인 페이지에서 
+```
+
+```
 ● 추가 안내
  - 비프백은 메뉴가 많아서 추가 작업이 필요해 보류중입니다.
 ```
@@ -70,4 +78,4 @@ push를 잘못해서 README가 날라가는 바람에 패치노트가 날라갔�
 Made with. HTML, CSS, Javascript, Bootstrap  
 Made by. Yang Lab (Roblox : flowerhr)
 
-※ 본 계산기는 제주 연동에서 공식으로 제작하지 않았습니다 ※
+※ 본 서비스는 로블록스 제주(https://discord.gg/jeju) 에서 제작한 것이 아닙니다! ※

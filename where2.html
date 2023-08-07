@@ -28,7 +28,9 @@
 
         let saleLog = `[ ${year}/${month}/${day} 어디야 판매기록 ]<br><br>`
         let logCount = 0
-
+        function formatNumber(number) {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
         function add(int,code) {
             if (count == 10) {
                 setAlert('10개까지만 주문이 가능합니다')
@@ -60,7 +62,7 @@
         }
 
         function show(message) {
-            document.getElementById('demo').innerHTML = message+"원"
+            document.getElementById('demo').innerHTML = formatNumber(message)+"원"
         }
 
         function setAlert(message) {
@@ -92,6 +94,7 @@
                     }
                     let discountModal = document.getElementById('discountModal')
                     discountModal.style.display = 'none'
+                    modalSet = 0
 
                 }
             } 
@@ -136,7 +139,7 @@
                 var newSaleLogSet = String(addSaleLogSet.slice(0, -1))
                 
 
-                newSaleLogSet += ` - ${res}원${discountSet}<br>`
+                newSaleLogSet += ` - ${formatNumber(res)}원${discountSet}<br>`
                 console.log(newSaleLogSet)
 
                 saleLog += newSaleLogSet
@@ -153,7 +156,7 @@
                 setAlert('이미 정산처리 되었습니다.')
             }
             else {
-                saleLog += `<br>총 판매 금액 : ${total}원`
+                saleLog += `<br>총 판매 금액 : ${formatNumber(total)}원`
                 let setElement = document.getElementById('text')
                 setElement.innerHTML = saleLog
                 isTotal = 1

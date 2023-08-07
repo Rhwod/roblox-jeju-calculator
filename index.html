@@ -21,6 +21,8 @@
     <button type="button" class="btn btn-info" class="btn btn-default btn-lg" onclick="window.open('coop.html', '_self')" style="font-size:30px;">UY 협력사</button>
     </div>
     <script>
+
+        let keyCount = 1
         function isMobile(){
 
         var UserAgent = navigator.userAgent;
@@ -36,8 +38,35 @@
         if(isMobile()) {
             location.href = "./mobile/";
         }
-    </script>
 
+        function adminMenu() {
+            document.getElementById('adminModal').style.display = 'block'
+        }
+
+        function adminMove() {
+            let input = document.getElementById('adminRoute').value;
+            
+            document.getElementById('adminRoute').value = ''
+            location.href = `./${input}`
+        }
+
+        window.addEventListener("keydown", e => {
+				if (e.key == 'Enter') {
+					if (keyCount == 5) {
+                        adminMenu()
+                    }
+                    else {
+                        keyCount += 1
+                    }
+				}
+			});
+		</script>
+    </script>
+    <div id="adminModal" style="padding-top: 15px;">
+        Route 입력<br>
+        <input id="adminRoute" style="font-size: 15px;"><br>
+        <button type="button" style="margin-left: 10px; margin-top: 12px; font-size: 15px;" class="btn btn-success" id="center" onclick="adminMove()">이동</button>
+    </div>
 <style>
     #center-box {
         height: 100vh;
@@ -58,6 +87,24 @@
         align-items: center;
         text-align: center;
     }
+
+    #adminModal {
+        display: none;
+    background-color: rgb(61, 61, 61);
+    color: white;
+    text-align: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 50%; /* Set left to 50% */
+    top: 50%; /* Set top to 50% */
+    width: 300px; /* Set the desired width */
+    height: 140px; /* Set the desired height */
+    overflow: auto;
+    border-radius: 30px;
+    font-size: 25px;
+    transform: translate(-50%, -50%); /* Center the modal using translate */
+}
 </style>
 </body>
 </html>
