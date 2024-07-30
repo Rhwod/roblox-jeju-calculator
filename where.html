@@ -5,24 +5,95 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <title>어디야 가격 계산</title>
     <script>
+        //var list1 = ['카페 아메리카노', '카페 아인슈페너', '에스프레소', '카페 라떼', '민초 라떼', '녹차 라떼', '케모마일 레드 티', '흑당 버블티', '밀크티', 'primary'];
+        //var list2 = ['허니 카라멜 브레드', '오리지널 핫 번', '초콜릿 마카롱', '바닐라 마카롱', '데블스 초코 케이크', '어디야 파르페 아이스크림', 'info'];
+
+        //var list = ['카페 아메리카노', '카페 아인슈페너', '에스프레소', '카페 라떼', '민초 라떼', '녹차 라떼', '케모마일 레드 티', '흑당 버블티', '밀크티', '허니 카라멜 브레드', '오리지널 핫 번', '초콜릿 마카롱', '바닐라 마카롱', '데블스 초코 케이크', '어디야 파르페 아이스크림']
+        //var priceList = [3500, 3500, 2500, 3500, 4000, 3500, 3000, 4000, 3500, 4500, 3000, 2000, 2000, 4000, 5000];
+        
+        var list1 = ["아메리카노", "아인슈페너", "에스프레소", "돌하르방 카푸치노", "카라멜 마끼아또", "황금루왁커피","primary"]
+        var list2 = ["카페 라떼", "녹차 라떼", "민초 라떼", "달고나 라떼", "제주 쑥길 라떼", "현무암 라떼","info"]
+        var list3 = ["밀크티", "흑당 버블티", "얼그레이 홍차","success"]
+        var list4 = ["블루문 에이드", "샤인머스켓 에이드", "제주 에이드", "감귤말차 블렌디도", "딸기 플랫치노", "그린애플 플랫치노","warning"]
+        var list5 = ["유니콘 프라페", "초코 스무디", "딸기 스무디", "파르페 아이스크림", "아포가토 아이스크림", "허니 브레도", "치즈케이크", "티라미수", "딸기 마카롱", "초코 마카롱", "오리지널 핫 번", "제주말차 카스테라", "감귤 롤케이크", "현무암 돌빵", "에그 타르트", "초콜릿 도넛", "와플","secondary"]
+        var list6 = ["어디야 모닝 샌드위치", "어디야 브런치 세트",'dark']
+
+        var list = ["아메리카노", "아인슈페너", "에스프레소", "돌하르방 카푸치노", "카라멜 마끼아또", "황금루왁커피", "카페 라떼", "녹차 라떼", "민초 라떼", "달고나 라떼", "제주 쑥길 라떼", "현무암 라떼", "밀크티", "흑당 버블티", "얼그레이 홍차", "블루문 에이드", "샤인머스켓 에이드", "제주 에이드", "감귤말차 블렌디도", "딸기 플랫치노", "그린애플 플랫치노", "유니콘 프라페", "초코 스무디", "딸기 스무디", "파르페 아이스크림", "아포가토 아이스크림", "허니 브레도", "치즈케이크", "티라미수", "딸기 마카롱", "초코 마카롱", "오리지널 핫 번", "제주말차 카스테라", "감귤 롤케이크", "현무암 돌빵", "에그 타르트", "초콜릿 도넛", "와플", "어디야 모닝 샌드위치", "어디야 브런치 세트"];
+        var priceList = [4000, 4000, 3000, 8000, 7000, 100000, 4000, 4000, 4000, 7000, 6000, 8000, 3000, 4000, 5000, 6000, 6000, 6000, 6000, 6000, 6000, 8000, 8000, 8000, 6000, 5000, 5000, 5000, 5000, 2000, 2000, 3000, 3000, 7000, 7000, 2000, 3000, 7000, 4000, 8000]
+    
+    document.addEventListener('DOMContentLoaded', function() {
+
+    
+        // 함수 실행
+        addItem(list1, list2, list3, list4, list5, list6);
+    
+        function addItem(...lists) {
+            let htmlItems = '';
+            let classType = lists[lists.length - 1]; // 버튼 클래스 값을 가져옴
+            let index = 0; // priceList를 위한 인덱스
+        
+            for (let i = 0; i < lists.length; i++) {
+                for (let j = 0; j < lists[i].length-1; j++) {
+                    let name = lists[i][lists[i].length-1]
+                    htmlItems += `<button type="button" style="color: white; font-size: 20px" class="btn btn-${name}" id="center" onclick="add(${priceList[index]},${index})" style="font-size:20px;">${lists[i][j]}</button>`;
+                    index++;
+                }
+            }
+        
+            document.getElementById('itemBox').innerHTML = htmlItems;
+        }
+    });
+
+
+        var isTotal = 0
+
         let res = 0
         let count = 0
         let discountCount = 0
-        function add(int) {
+        let total = 0
+
+        var modalSet = 0
+
+        let jsonDB = {}
+
+        const now = new Date();
+        const year = now.getFullYear().toString().slice(-2);
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+
+        let saleLog = `[ ${year}/${month}/${day} 어디야 판매기록 ]<br><br>`
+        let logCount = 0
+
+        function formatNumber(number) {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        function add(int,code) {
             if (count == 10) {
                 setAlert('10개까지만 주문이 가능합니다')
             }
             else {
                 if (discountCount == 1) {
-                    setAlert('할인이 적용되어서 더 추가할수 없습니다')
+                    setAlert('할인이 적용되어서 더 추가할 수 없습니다')
                 }
                 else {
+                    var sett = String(code)
                     res = Number(res) + Number(int)
                     count = Number(count) + 1
+                    if (jsonDB.hasOwnProperty(code)) {
+                        jsonDB[sett] += 1
+                    } else {
+                        jsonDB[sett] = 1
+                    }
+                    
+
+                    console.log(sett)
+                    console.log(jsonDB)
+
                     showCount()
                     show(res)
                 }
@@ -32,7 +103,7 @@
         }
 
         function show(message) {
-            document.getElementById('demo').innerHTML = message+"원"
+            document.getElementById('demo').innerHTML = formatNumber(message)+"원"
         }
 
         function setAlert(message) {
@@ -43,17 +114,165 @@
             document.getElementById('counter').innerHTML = count+"개 선택함"
         }
 
-        function discount() {
+        function discount(type) {
             if (count !== 0) {
                 if (discountCount == 1) {
-                setAlert('이미 할인되었습니다')
+                    setAlert('이미 할인되었습니다')
                 }
                 else {
-                res = parseInt(res / 2)
-                discountCount = 1
-                show(res)
+                    jsonDB['discount'] = type
+                    switch (type) {
+                        case 50:
+                            res = parseInt(res / 2)
+                            discountCount = 1
+                            show(res)
+                            break
+                        case 0:
+                            res = 0
+                            discountCount = 1
+                            show(res)
+                            break
+                    }
+                    let discountModal = document.getElementById('discountModal')
+                    discountModal.style.display = 'none'
+                    modalSet = 0
+
                 }
             } 
+        }
+
+        function addLog() {
+            if (isTotal == 1) {
+                setAlert('이미 정산처리 되어서 추가할 수 없습니다.')
+            }
+            else if (Object.keys(jsonDB).length === 0) {
+                setAlert('상품이 추가되지 않았습니다!')
+            }
+            else {
+                let discountSet = '';
+
+                logCount += 1
+                let addSaleLogSet = `${logCount}.`
+
+                for (const key in jsonDB) {
+                    if (jsonDB.hasOwnProperty(key)) {
+                        const value = jsonDB[key];
+                        if (key == 'discount') {
+                            switch (value) {
+                                case 0:
+                                    discountSet = ' (공무원 무료)'
+                                    break;
+                                case 50:
+                                    discountSet = ' (협력사 할인)'
+                                    break;
+                            }
+                            
+                        }
+                        else if (key !== 'tip'){
+                            var productName = list[key]
+                            addSaleLogSet += ` ${productName} : ${value},`
+                        }
+
+                    }
+                }
+
+                var newSaleLogSet = String(addSaleLogSet.slice(0, -1))
+                
+
+                newSaleLogSet += ` - ${formatNumber(res)}원${discountSet}`
+                console.log(newSaleLogSet)
+
+                for (const key in jsonDB) {
+                    if (jsonDB.hasOwnProperty(key)) {
+                        const value = jsonDB[key];
+                        if (key == 'tip') {
+                            newSaleLogSet += ` [팁 : ${formatNumber(value - res)}원]`
+                        }
+                    }
+                }
+
+                newSaleLogSet += '<br>'
+                saleLog += newSaleLogSet
+                let setElement = document.getElementById('text')
+                setElement.innerHTML = saleLog
+
+                total += res
+                reset()
+            }
+        }
+
+        function endSaleLog() {
+            if (!isTotal == 0) {
+                setAlert('이미 정산처리 되었습니다.')
+            }
+            else {
+                saleLog += `<br>총 판매 금액 : ${formatNumber(total)}원`
+                let setElement = document.getElementById('text')
+                setElement.innerHTML = saleLog
+                isTotal = 1
+            }
+        }
+
+        function reset() {
+            res = 0
+            count = 0
+            jsonDB = {}
+            discountCount = 0
+            showCount()
+            show(res)
+            setAlert('')
+            tipCount = 0
+        }
+
+        function returnPage() {
+            if (window.confirm("정말 돌아가시겠습니까? 판매기록이 초기화됩니다.")) {
+                window.open('./', '_self')
+            }
+        }
+        function disModalShowClose() {
+            let discountModal = document.getElementById('discountModal')
+            if (modalSet == 0) {
+                discountModal.style.display = "block"
+                modalSet = 1
+            }
+            else if (modalSet == 1) {
+                discountModal.style.display = "none"
+                modalSet = 0
+            }
+        }
+        let tipModalSet = 0;
+        function tipModalShowClose() {
+            let tipModal = document.getElementById('tipModal')
+            if (tipModalSet == 0) {
+                tipModal.style.display = "block"
+                tipModalSet = 1
+            }
+            else if (tipModalSet == 1) {
+                tipModal.style.display = "none"
+                document.getElementById('tipInput').value = ''
+                tipModalSet = 0
+            }
+        }
+        var tipCount = 0;
+        function tip() {
+            if (tipCount == 0 && Object.keys(jsonDB).length !== 0) {
+                var tipInputVal = document.getElementById('tipInput').value
+                var tipInputNum = parseFloat(tipInputVal.replace(/,/g, ''));
+                jsonDB['tip'] = tipInputNum
+                tipInputVal = ''
+                tipModalShowClose()
+                setAlert('팁 적용됨.')
+                tipCount = 1
+            }
+            else {
+                tipModalShowClose();
+                setAlert('상품이 추가되지 않았거나 이미 팁 적용됨.')
+            }
+        }
+    </script>
+    <script>
+        window.onbeforeunload = function() {
+            return "페이지를 나가면 판매기록이 손실됩니다. 나가시겠습니까?"
         }
     </script>
     <style>
@@ -61,37 +280,122 @@
             flex: 3;
             text-align: center;
         }
-        
+        #log-box {
+            text-align: center;
+            align-items: center;
+            margin-top: 50px;
+            padding: 30px;
+            margin-left: 0px;
+            font-size: 25px;
+            background-color: rgb(41, 41, 41);
+            color: white;
+        }
+        #discountModal {
+            display: none;
+    background-color: rgb(61, 61, 61);
+    color: white;
+    text-align: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 50%; /* Set left to 50% */
+    top: 50%; /* Set top to 50% */
+    width: 300px; /* Set the desired width */
+    height: 140px; /* Set the desired height */
+    overflow: auto;
+    border-radius: 30px;
+    font-size: 25px;
+    transform: translate(-50%, -50%); /* Center the modal using translate */
+}
+#tipModal {
+            display: none;
+    background-color: rgb(61, 61, 61);
+    color: white;
+    text-align: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 50%; /* Set left to 50% */
+    top: 50%; /* Set top to 50% */
+    width: 300px; /* Set the desired width */
+    height: 140px; /* Set the desired height */
+    overflow: auto;
+    border-radius: 30px;
+    font-size: 25px;
+    transform: translate(-50%, -50%); /* Center the modal using translate */
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button {
+    margin: 2px;
+}
     </style>
 </head>
 <body>
     <div style="text-align: center;">
     </br>
     </br>
-    <button type="button" class="btn btn-primary" id="center" onclick="add(3500)"style="font-size:20px;">아메리카노</button>
-    <button type="button" class="btn btn-primary" id="center" onclick="add(3500)"style="font-size:20px;">아인슈페너</button>
-    <button type="button" class="btn btn-primary" id="center" onclick="add(2500)"style="font-size:20px;">에스프레소</button>
-    <button type="button" class="btn btn-primary" id="center" onclick="add(3500)"style="font-size:20px;">카페라떼</button>
-    <button type="button" class="btn btn-primary" id="center" onclick="add(4000)"style="font-size:20px;">민초라떼</button>
-    <button type="button" class="btn btn-primary" id="center" onclick="add(3500)"style="font-size:20px;">녹차라떼</button>
-    <button type="button" class="btn btn-primary" id="center" onclick="add(3000)"style="font-size:20px;">케모마일 레드 티</button>
-    <button type="button" class="btn btn-primary" id="center" onclick="add(4000)"style="font-size:20px;">흑당 버블티</button>
-    <button type="button" class="btn btn-primary" id="center" onclick="add(3500)"style="font-size:20px;">밀크티</button>
-    <button type="button" class="btn btn-info" id="center" onclick="add(4500)"style="font-size:20px; color: white;">카라멜 브레드</button>
-    <button type="button" class="btn btn-info" id="center" onclick="add(3000)"style="font-size:20px; color: white;">핫 번</button>
-    <button type="button" class="btn btn-info" id="center" onclick="add(2000)"style="font-size:20px; color: white;">마카롱</button>
-    <button type="button" class="btn btn-info" id="center" onclick="add(4000)"style="font-size:20px; color: white;">초코 케이크</button>
-    <button type="button" class="btn btn-info" id="center" onclick="add(5000)"style="font-size:20px; color: white;">파르페</button>
+    <div id="itemBox">
+    </div>
     </br>
     </br>
     <p id="demo" style="font-size:30px">0원</p>
     <p id="counter" style="font-size:20px; text-align: center;">0개 선택함</p>
     <p id="alert" style="font-size:30px; color: red"></p>
     </br>
-    <button type="button" style="font-size:20px;" onclick="discount()"class="btn btn-warning">50% 할인</button>
-    <button type="button" class="btn btn-danger" id="center" onclick="window.location.reload(true)"style="font-size:20px;">초기화</button>
-    <br><br><br>
-    <button type="button" class="btn btn-success" id="center" onclick="window.open('./', '_self')"style="font-size:20px;">돌아가기</button>
+    <button type="button" id="discountBtn" style="font-size:20px;" onclick="disModalShowClose()"class="btn btn-warning">부가 처리</button>
+    <div id="discountModal" style="padding-top: 15px;">
+        <span style="position: absolute; top: 10px; right: 10px; font-size: 20px; cursor: pointer;" onclick="disModalShowClose()">&times;</span>
+        부가 처리<br>
+        <button type="button" style="margin-top: 12px; font-size: 20px;" class="btn btn-primary" id="center" onclick="discount(50)">UY 50%</button>
+        <button type="button" style="margin-left: 10px; margin-top: 12px; font-size: 20px;" class="btn btn-primary" id="center" onclick="discount(0)">공무원 무료</button>
+        <br><button type="button" style="margin-left: 10px; margin-top: 12px; font-size: 20px;" class="btn btn-primary" id="center" onclick="disModalShowClose(); tipModalShowClose();">팁 처리</button>
     </div>
+    <div id="tipModal" style="padding-top: 15px; display: none;">
+        <span style="position: absolute; top: 10px; right: 10px; font-size: 20px; cursor: pointer;" onclick="tipModalShowClose()">&times;</span>
+        받은 금액 입력<br>
+        <input id="tipInput" style="font-size: 15px;">
+        <br><button type="button" style="margin-left: 10px; margin-top: 12px; font-size: 15px;" class="btn btn-success" id="center" onclick="tip()">확인</button>
+    </div>
+    
+    <button type="button" class="btn btn-dark" id="center" onclick="addLog()"style="font-size:20px;">기록 추가</button>
+    <br><br><br>
+    <button type="button" class="btn btn-success" id="center" onclick="returnPage()"style="font-size:20px;">돌아가기</button>
+    <button type="button" class="btn btn-danger" id="center" onclick="reset()"style="font-size:20px;">지우기</button>
+    <br><br>
+    <button type="button" class="btn btn-primary" id="center" onclick="endSaleLog()"style="font-size:20px;">정산 처리</button>
+    </div>
+    
+    <div id="log-box"><a id="text"></a></div>
+    <script>
+    document.getElementById("tipInput").addEventListener("input", function() {
+        // 입력 값에서 모든 쉼표(,)를 제거하고 숫자로 변환합니다.
+        var inputValue = parseFloat(this.value.replace(/,/g, ''));
+        
+        // 만약 입력 값이 숫자가 아니라면 0으로 설정합니다.
+        if (isNaN(inputValue)) {
+            inputValue = 0;
+        }
+
+        // 숫자를 형식화된 문자열로 변환하여 표시합니다.
+        var formattedValue = inputValue.toLocaleString();
+        
+        // 결과를 출력할 요소에 설정합니다.
+        this.value = formattedValue;
+    });
+    </script>
 </body>
 </html>
