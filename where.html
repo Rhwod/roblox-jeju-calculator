@@ -75,30 +75,41 @@
         function add(int,code) {
             if (count == 10) {
                 setAlert('10개까지만 주문이 가능합니다')
+            }/*
+            else if () {
+    
+            }*/
+            else if (discountCount == 1) {
+                setAlert('할인이 적용되어서 더 추가할 수 없습니다')
             }
-            else {
-                if (discountCount == 1) {
-                    setAlert('할인이 적용되어서 더 추가할 수 없습니다')
-                }
                 else {
-                    var sett = String(code)
-                    res = Number(res) + Number(int)
-                    count = Number(count) + 1
-                    if (jsonDB.hasOwnProperty(code)) {
-                        jsonDB[sett] += 1
-                    } else {
-                        jsonDB[sett] = 1
+                    console.log(`가격 : ${res}`)
+                    if (Number(res) + Number(int) >= 900000) {
+                        setAlert('결제 한도(900,000) 초과!')
                     }
-                    
+                    else {
+                        count = Number(count) + 1
+                        res = Number(res) + Number(int)
 
-                    console.log(sett)
-                    console.log(jsonDB)
+                        var sett = String(code)
 
-                    showCount()
-                    show(res)
+                        if (jsonDB.hasOwnProperty(code)) {
+                            jsonDB[sett] += 1
+                        }
+
+                        else {
+                            jsonDB[sett] = 1
+                        }
+
+                        console.log(sett)
+                        console.log(jsonDB)
+
+                        showCount()
+                        show(res)
+                    }
+
                 }
                 
-            }
             
         }
 
